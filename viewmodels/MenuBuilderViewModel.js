@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import repositoryFoodApi from "../repositories/foodRepository";
 
 
-/**VIEW MODEL CLASS FOR MENU BUILDER SCREEN:
+/**VIEW MODEL CLASS FOR MENU BUILDER SCREEN :
  * 
  */
 const MenuBuilderViewModel = {
     //TODO: useState for livedata; implement this (Jacob) - JM
     //test call:
-    callApi: () => repositoryFoodApi.callApi('banana')
+    callApi: () => repositoryFoodApi.callApi('rice')
 };
 
 export default MenuBuilderViewModel;

@@ -1,10 +1,10 @@
 import React from "react";
 
 //import ViewModel:
-import ViewModel from '../viewmodels/MenuBuilderViewModel';
+import ViewModel from '../viewmodels/menuBuilderViewModel';
 
-//import UI componets:
-//TODO: import UI(Parker)
+//import UI componets :
+//TODO: import UI
 import { StyleSheet, Text, View } from 'react-native';
 
 function MenuBuilderView(){

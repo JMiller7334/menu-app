@@ -1,6 +1,6 @@
 import React from "react";
 
-//function imports:
+//function imports :
 import {foodApi } from "./foodApi";
 
 const repCallFoodApi = {
