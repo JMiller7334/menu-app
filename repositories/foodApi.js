@@ -10,8 +10,8 @@ import React from "react";
 function foodApi({input}){
     // please ensure api key isn't here when pushing to git hub - JM
     // Below are the settings for the api call.
-    const API_KEY = 'ae5ef507587e326bbaa18fe2bc7f9c3c';
-    const APP_ID = 'f3e2a4b4';
+    const API_KEY = '';
+    const APP_ID = '';
     //const url = 'https://edamam-food-and-grocery-database.p.rapidapi.com/auto-complete?q='+input;
     const url = 'https://api.edamam.com/api/nutrition-data?app_id='+APP_ID+'&app_key='+API_KEY+'&nutrition-type=logging&ingr=rice';
     const options = {
