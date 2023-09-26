@@ -5,7 +5,7 @@ import ViewModel from '../viewmodels/menuBuilderViewModel';
 
 //import UI componets :
 //TODO: import UI
-import { StyleSheet, Text, View, ScrollView, Button, Alert, SectionList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, Alert, SectionList, SafeAreaView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 const categories = ["Appetizers", "Lunch", "Dinner", "Pizza", "Dessert"];
 const Colors = {
@@ -41,53 +41,59 @@ function MenuBuilderView(){
     ViewModel.callApi();
 
     return (
-      <>
+      <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <View style={styles.button}>
-          <Button
-            title="Settings"
-            onPress={() => Alert.alert('Under Construction')}
-            color={Colors.lightGrey}
-          />
+            <Button
+              title="Settings"
+              onPress={() => Alert.alert('Under Construction')}
+              color={Colors.lightGrey}
+            />
           </View>
-        <Text style={styles.title}>MENU</Text>
-        <SelectDropdown
-          data={categories}
-          onSelect={(selectedItem, index) => {
-            console.log(selectedItem, index)
-          }}
-          buttonTextAfterSelection={(selectedItem, index) => {
-            // text represented after item is selected
-            return selectedItem
-          }}
-          rowTextForSelection={(item, index) => {
-            // text represented for each item in dropdown
-            return item
-          }}
+          <Text style={styles.title}>MENU</Text>
+          <SelectDropdown
+            data={categories}
+            style={styles.dropdown}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index)
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              // text represented after item is selected
+              return selectedItem
+            }}
+            rowTextForSelection={(item, index) => {
+              // text represented for each item in dropdown
+              return item
+            }}
           />
         </View>
         <ScrollView style={styles.scrollView}>
-        <SectionList
-          sections={DATA}
-          keyExtractor={(item, index) => item + index}
-          renderItem={({item}) => (
-            <View style={styles.item}>
-              <Text style={styles.menuTitle}>{item}</Text>
-            </View>
-          )}
-          renderSectionHeader={({section: {title}}) => (
-            <Text style={styles.category}>{title}</Text>
-          )}
-        />
+          <SectionList
+            sections={DATA}
+            keyExtractor={(item, index) => item + index}
+            renderItem={({item}) => (
+              <View style={styles.item}>
+                <Text style={styles.menuTitle}>{item}</Text>
+              </View>
+            )}
+            renderSectionHeader={({section: {title}}) => (
+              <Text style={styles.category}>{title}</Text>
+            )}
+          />
         </ScrollView>
         <View style={styles.footer}>
           <Button
-            title="Add Item"
+            title="Orders"
+            onPress={() => Alert.alert('Under Construction')}
+            color='white'
+          />
+          <Button
+            title="+"
             onPress={() => Alert.alert('Under Construction')}
             color='white'
           />
         </View>
-      </>
+      </SafeAreaView>
     );
 }
 
@@ -98,29 +104,39 @@ file too as well, but you may also want to look into best practics too - JM
 
 const styles = StyleSheet.create({
     container: {
+      backgroundColor: Colors.darkGrey,
       flex: 1,
-      alignItems: 'center', // Center horizontally
-      justifyContent: 'center', // Center vertically
+      alignItems: 'center', // Center secondary axis
+      justifyContent: 'center', // Center main axis
 
     },
     header: {
+      flex: 0.4,
+      justifyContent: "center",
       alignItems: 'center',
-      padding: 50,
-      backgroundColor: Colors.darkGrey
+      backgroundColor: Colors.darkGreen,
+
     },
     title: {
+      marginBottom: 20,
       fontSize: 60,
       letterSpacing: 30,
-      marginTop: 20,
-      marginBottom: 20,
       color: Colors.lightGrey
     },
+    dropdown: {
+      flex: 1,
+    },
     button: {
-      marginRight: 0,
-      backgroundColor: Colors.darkGrey,
+      width: '100%',
+      flex: 0.8,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
       color: Colors.lightGrey
     },
     scrollView: {
+      flex: 1,
+      width: '100%',
+      paddingLeft: 50,
       backgroundColor: Colors.darkGrey
     },
     item: {
@@ -128,7 +144,8 @@ const styles = StyleSheet.create({
       marginVertical: 8,
     },
     category: {
-      fontSize: 32,
+      marginTop: 50,
+      fontSize: 48,
       color: Colors.lightGreen,
     },
     menuTitle: {
@@ -136,8 +153,11 @@ const styles = StyleSheet.create({
       fontSize: 24,
     },
     footer: {
-      backgroundColor: Colors.lightGreen,
-      padding: 40
+      width: '100%',
+      flex: 0.1,
+      flexDirection: "row",
+      justifyContent: 'space-between',
+      backgroundColor: Colors.lightGreen
     }
   });
 
