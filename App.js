@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import MenuBuilderView from './views/menuBuilderView';
+import MenuBuilderView from './views/itemAdder';
 
 export default function App() {
   return (

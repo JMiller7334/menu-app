@@ -80,6 +80,13 @@ function MenuBuilderView(){
           )}
         />
         </ScrollView>
+        <View style={styles.footer}>
+          <Button
+            title="Add Item"
+            onPress={() => Alert.alert('Under Construction')}
+            color='white'
+          />
+        </View>
       </>
     );
 }
@@ -88,6 +95,7 @@ function MenuBuilderView(){
 document. Navigation of screens will likelt need to be handled in this
 file too as well, but you may also want to look into best practics too - JM
 */
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -126,6 +134,10 @@ const styles = StyleSheet.create({
     menuTitle: {
       color: Colors.lightGrey,
       fontSize: 24,
+    },
+    footer: {
+      backgroundColor: Colors.lightGreen,
+      padding: 40
     }
   });
 
