@@ -5,15 +5,16 @@ import ViewModel from '../viewmodels/menuBuilderViewModel';
 
 //import UI componets :
 //TODO: import UI
-import { StyleSheet, Text, View, ScrollView, Button, Alert, SectionList, SafeAreaView } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ScrollView, Button, Alert, SectionList, SafeAreaView } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-const categories = ["Appetizers", "Lunch", "Dinner", "Pizza", "Dessert"];
 const Colors = {
   darkGrey: '#202020',
   lightGrey: '#D9D9D9',
   darkGreen: '#1B3C33',
   lightGreen: '#FEC603'
-}
+};
+const categories = ["Appetizers", "Lunch", "Dinner", "Pizza", "Dessert"];
+
 
 // test data
 const DATA = [
@@ -35,22 +36,22 @@ const DATA = [
   },
 ];
 
+// import alertToTest from './testing';
+
 function MenuBuilderView(){
     //TODO: Live data/useState variable will go here.
 
     ViewModel.callApi();
 
+    /* Menu text is like  that because styling with
+       letter spacing causes misalignment in view */
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <View style={styles.button}>
-            <Button
-              title="Settings"
-              onPress={() => Alert.alert('Under Construction')}
-              color={Colors.lightGrey}
-            />
-          </View>
-          <Text style={styles.title}>MENU</Text>
+          <TouchableOpacity onPress={() => Alert.alert('Under Construction')} style={styles.button}>
+            <Text>Settings</Text>
+          </TouchableOpacity>
+          <Text style={styles.title}>M  E  N  U</Text>
           <SelectDropdown
             data={categories}
             style={styles.dropdown}
@@ -82,16 +83,12 @@ function MenuBuilderView(){
           />
         </ScrollView>
         <View style={styles.footer}>
-          <Button
-            title="Orders"
-            onPress={() => Alert.alert('Under Construction')}
-            color='white'
-          />
-          <Button
-            title="+"
-            onPress={() => Alert.alert('Under Construction')}
-            color='white'
-          />
+          <TouchableOpacity style={styles.footerordersbuttoncontainer} onPress={() => Alert.alert('Under Construction')}>
+            <Text style={styles.footerbutton} >Orders</Text>
+          </TouchableOpacity>  
+          <View style={styles.footeraddbuttoncontainer}>
+            <Text style={styles.footerbutton} onPress={() => Alert.alert('Under construction')}>+</Text>
+          </View>
         </View>
       </SafeAreaView>
     );
@@ -111,6 +108,7 @@ const styles = StyleSheet.create({
 
     },
     header: {
+      width: '100%',
       flex: 0.4,
       justifyContent: "center",
       alignItems: 'center',
@@ -119,18 +117,15 @@ const styles = StyleSheet.create({
     },
     title: {
       marginBottom: 20,
-      fontSize: 60,
-      letterSpacing: 30,
+      fontSize: 50,
       color: Colors.lightGrey
     },
     dropdown: {
       flex: 1,
     },
     button: {
+      backgroundColor: '#ffffff',
       width: '100%',
-      flex: 0.8,
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
       color: Colors.lightGrey
     },
     scrollView: {
@@ -141,7 +136,7 @@ const styles = StyleSheet.create({
     },
     item: {
       padding: 20,
-      marginVertical: 8,
+      paddingBottom: 50
     },
     category: {
       marginTop: 50,
@@ -153,11 +148,39 @@ const styles = StyleSheet.create({
       fontSize: 24,
     },
     footer: {
+      position: 'absolute',
       width: '100%',
-      flex: 0.1,
+      height: '10%',
+      padding: 20,
+      paddingBottom: 100,
+      bottom: 0,
+      flex: 1,
       flexDirection: "row",
       justifyContent: 'space-between',
+      aligncontent: 'center',
       backgroundColor: Colors.lightGreen
+    },
+    footerordersbuttoncontainer: {
+      backgroundColor: Colors.darkGreen,
+      padding: 10,
+      width: 130,
+      height: 50,
+      borderRadius: 90,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    footeraddbuttoncontainer: {
+      backgroundColor: Colors.darkGreen,
+      padding: 0,
+      width: 50,
+      height: 50,
+      borderRadius: 90,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    footerbutton: {    
+      fontSize: 30,
+      color: '#ffffff'
     }
   });
 
